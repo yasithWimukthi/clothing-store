@@ -42,7 +42,7 @@ class SignIn extends Component{
                         required value={this.state.email}
                         handleChange={this.handleChange}
                     />
-                    <label>Email</label>
+
                     <FormInput
                         name="password"
                         type="password"
@@ -51,7 +51,7 @@ class SignIn extends Component{
                         value={this.state.password}
                         handleChange={this.handleChange}
                     />
-                    <label>Password</label>
+
                     <CustomButton type="submit" >Sign In</CustomButton>
                 </form>
             </div>
