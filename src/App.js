@@ -11,22 +11,30 @@ class App extends Component {
 
     constructor() {
         super();
+        this.unsubscribe = null;
         this.state = {
             currentUser : null
         }
     }
 
+    unsubscribeFromAuth = null;
     componentDidMount() {
-        auth.onAuthStateChanged(user =>{
+        this.unsubscribe = auth.onAuthStateChanged(user =>{
             this.setState({currentUser:user})
             console.log(user);
         });
     }
 
+    componentWillMount() {
+        if (this.unsubscribe){
+            this.unsubscribe();
+        }
+    }
+
     render() {
         return (
             <div>
-                <Header />
+                <Header currentUser={this.state.currentUser} />
                 <Switch>
                     <Route exact path="/" component={HomePage}/>
                     <Route path="/shop" component={ShopPage} />
