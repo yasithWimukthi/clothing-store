@@ -2,8 +2,7 @@ import React,{Component} from 'react';
 import './sign-up.styles.scss';
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
-import {auth} from "firebase";
-import {createUserProfileDocument} from "../../firebase/firebase.utils";
+import {auth,createUserProfileDocument} from "../../firebase/firebase.utils";
 
 class SignUp extends Component {
     constructor() {
@@ -41,7 +40,7 @@ class SignUp extends Component {
     }
 
     handleChange = event => {
-        this.setState({[name]:value})
+        this.setState({[event.target.name]:event.target.value})
     }
 
     render() {
