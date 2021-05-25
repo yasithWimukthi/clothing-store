@@ -21,6 +21,11 @@ const CartDropdown = ({cartItems}) =>{
     )
 }
 
+// const mapStateToProps = ({cart:{cartItems}}) => ({
+//     cartItems
+// })
+
+/** using reselect*/
 const mapStateToProps = (state) => ({
     cartItems:selectCartItems(state)
 })
