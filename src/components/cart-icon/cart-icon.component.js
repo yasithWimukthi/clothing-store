@@ -18,6 +18,11 @@ const CartIcon = ({toggleCartHidden,itemCount}) =>{
     )
 }
 
+// const mapStateToProps = ({cart:{cartItems}}) =>({
+//     itemCount : cartItems.reduce((accumulateQuantity,cartItem) => accumulateQuantity + cartItem.quantity,0)
+// })
+
+/** using reselect*/
 const mapStateToProps = (state) =>({
     itemCount : selectCartItemCount(state)
 })
