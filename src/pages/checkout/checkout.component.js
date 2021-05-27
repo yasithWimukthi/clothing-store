@@ -24,9 +24,6 @@ const CheckoutPage = ({cartItems,total}) =>{
                     <span>Remove</span>
                 </div>
             </div>
-
-
-
         </div>
     )
 }
