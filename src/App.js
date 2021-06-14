@@ -8,7 +8,7 @@ import ShopPage from "./pages/shop-page/shop.component";
 import Header from "./components/header/header.component";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import {addCollectionAndDocuments, auth, createUserProfileDocument} from "./firebase/firebase.utils";
-import {setCurrentUser} from "./redux/user/user.actions";
+import {checkUserSession, setCurrentUser} from "./redux/user/user.actions";
 import {selectCurrentUser} from "./redux/user/user.selectors";
 import CheckoutPage from "./pages/checkout/checkout.component";
 import {selectCollectionForPreview} from "./redux/shop/shop.selectors";
@@ -54,6 +54,11 @@ class App extends Component {
     //     }
     // }
 
+    componentDidMount() {
+        const {checkUserSession} = this.props;
+        checkUserSession();
+    }
+
     render() {
         return (
             <div>
@@ -83,8 +88,9 @@ const mapStateToProps = (state) => ({
     collectionsArray :selectCollectionForPreview(state)
 })
 
-// const mapDispatchToProps = dispatch => ({
-//     setCurrentUser : user => dispatch(setCurrentUser((user)))
-// })
+const mapDispatchToProps = dispatch => ({
+    //setCurrentUser : user => dispatch(setCurrentUser((user)))
+    checkUserSession : () => dispatch(checkUserSession())
+})
 
-export default connect(mapStateToProps) (App);
+export default connect(mapStateToProps,mapDispatchToProps) (App);
