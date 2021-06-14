@@ -24,10 +24,10 @@ class App extends Component {
     //     }
     // }
 
-    unsubscribeFromAuth = null;
-    componentDidMount() {
-
-        const {setCurrentUser,collectionsArray} = this.props;
+    // unsubscribeFromAuth = null;
+    //     componentDidMount() {
+    //
+    //         const {setCurrentUser,collectionsArray} = this.props;
 
         // this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth =>{
         //     this.setState({currentUser:user})
@@ -46,13 +46,13 @@ class App extends Component {
         //     setCurrentUser(userAuth);
         //     addCollectionAndDocuments('collections',collectionsArray.map(({title,items}) => ({title,items})));
         // });
-    }
+    //}
 
-    componentWillMount() {
-        if (this.unsubscribeFromAuth){
-            this.unsubscribeFromAuth();
-        }
-    }
+    // componentWillMount() {
+    //     if (this.unsubscribeFromAuth){
+    //         this.unsubscribeFromAuth();
+    //     }
+    // }
 
     render() {
         return (
@@ -83,8 +83,8 @@ const mapStateToProps = (state) => ({
     collectionsArray :selectCollectionForPreview(state)
 })
 
-const mapDispatchToProps = dispatch => ({
-    setCurrentUser : user => dispatch(setCurrentUser((user)))
-})
+// const mapDispatchToProps = dispatch => ({
+//     setCurrentUser : user => dispatch(setCurrentUser((user)))
+// })
 
-export default connect(mapStateToProps,mapDispatchToProps) (App);
+export default connect(mapStateToProps) (App);
