@@ -11,8 +11,9 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import {selectCurrentUser} from "../../redux/user/user.selectors";
 import {selectCartHidden} from "../../redux/cart/cart.selectors";
 import {HeaderContainer, LogoContainer, OptionDiv, OptionLink, OptionsContainer} from "./header.styles";
+import {signOutStart} from "../../redux/user/user.actions";
 
-const Header = ({currentUser,hidden}) =>{
+const Header = ({currentUser,hidden,signOutStart}) =>{
     return (
         <HeaderContainer>
             <LogoContainer to="/">
@@ -23,7 +24,7 @@ const Header = ({currentUser,hidden}) =>{
                 <OptionLink to="/shop">CONTACT</OptionLink>
                 {
                     currentUser !==null ?
-                        <OptionDiv onClick={()=>auth.signOut()}>SIGN OUT </OptionDiv>
+                        <OptionDiv onClick={signOutStart}>SIGN OUT </OptionDiv>
                         :
                         <OptionLink to='/signin' >SIGN IN</OptionLink>
                 }
@@ -48,4 +49,8 @@ const mapStateToProps = state =>({
     hidden:selectCartHidden(state)
 })
 
-export default connect(mapStateToProps) (Header);
+const mapDispatchToProps = dispatch => ({
+    signOutStart : () => dispatch(signOutStart())
+})
+
+export default connect(mapStateToProps,mapDispatchToProps) (Header);
